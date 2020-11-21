@@ -16,6 +16,7 @@
 ### Association
 
 - has_many :user_items
+- has_many :items
 
 ## user_itemsテーブル
 
@@ -28,6 +29,7 @@
 
 - belongs_to :item
 - belongs_to :user
+- has_one :destination
 
 ## itemsテーブル
 
@@ -46,7 +48,6 @@
 ### Association
 
 - belongs_to :user
-- has_one :destination
 
 ## Destinationテーブル
 
@@ -61,5 +62,4 @@
 
 ### Association
 
-- belongs_to :user
-- belongs_to :item
+- belongs_to :user_item
