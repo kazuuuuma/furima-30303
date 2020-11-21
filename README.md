@@ -6,7 +6,6 @@
 | ------------------ | ------ | ------------|
 | nickname           | string | null: false |
 | email              | string | null: false |
-| password           | string | null: false |
 | encrypted_password | string | null: false |
 | family_name        | string | null: false |
 | first_name         | string | null: false |
@@ -18,6 +17,18 @@
 
 - has_many :items
 - has_many :buys
+
+## user_itemsテーブル
+
+| Column   | Type       | Options                        |
+| -------- | ---------- | ------------------------------ |
+| user     | references | null: false, foreign_key: true |
+| item     | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :item
+- belongs_to :user
 
 ## itemsテーブル
 
