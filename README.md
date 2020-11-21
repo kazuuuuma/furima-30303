@@ -59,6 +59,7 @@
 | address       | string     | null: false                    |
 | bild          | string     |                                |
 | phonenumber   | string     | null: false                    |
+| user_item     | references | foreign_key: true              |
 
 ### Association
 
