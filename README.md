@@ -2,28 +2,27 @@
 
 ## usersテーブル
 
-| Column             | Type   | Options     |
-| ------------------ | ------ | ------------|
-| nickname           | string | null: false |
-| email              | string | null: false |
-| encrypted_password | string | null: false |
-| family_name        | string | null: false |
-| first_name         | string | null: false |
-| fam_name_furigana  | string | null: false |
-| fst_name_furigana  | string | null: false |
-| birthday           | date   | null: false |
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| nickname           | string | null: false               |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
+| family_name        | string | null: false               |
+| first_name         | string | null: false               |
+| fam_name_furigana  | string | null: false               |
+| fst_name_furigana  | string | null: false               |
+| birthday           | date   | null: false               |
 
 ### Association
 
-- has_many :items
-- has_many :buys
+- has_many :user_items
 
 ## user_itemsテーブル
 
-| Column   | Type       | Options                        |
-| -------- | ---------- | ------------------------------ |
-| user     | references | null: false, foreign_key: true |
-| item     | references | null: false, foreign_key: true |
+| Column   | Type       | Options           |
+| -------- | ---------- | ----------------- |
+| user     | references | foreign_key: true |
+| item     | references | foreign_key: true |
 
 ### Association
 
@@ -42,14 +41,14 @@
 | charge_id       | integer    | null: false                    |
 | days_to_ship_id | integer    | null: false                    |
 | price           | string     | null: false                    |
-| user            | references | null: false, foreign_key: true |
+| user            | references | foreign_key: true              |
 
 ### Association
 
 - belongs_to :user
-- has_one :buy
+- has_one :destination
 
-## Buysテーブル
+## Destinationテーブル
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
