@@ -6,10 +6,10 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true
   validates :nickname, presence: true
-  validates :family_name, presence: true
-  validates :first_name, presence: true
-  validates :fam_name_furigana, presence: true
-  validates :fst_name_furigana, presence: true
+  validates :family_name, presence: true, format: {with: /\A[ぁ-んァ-ン一-龥]/ }
+  validates :first_name, presence: true, format: {with: /\A[ぁ-んァ-ン一-龥]/ }
+  validates :fam_name_furigana, presence: true, format: {with: /\A[ァ-ヶー－]+\z/ }
+  validates :fst_name_furigana, presence: true, format: {with: /\A[ァ-ヶー－]+\z/ }
   validates :birthday, presence: true
 
   has_many :items
