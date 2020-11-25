@@ -57,25 +57,40 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
+      it "passwordが半角英語のみでは登録できない" do
+        @user.password = "aaaaaa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+      end
+      it "passwordが半角数字のみでは登録できない" do
+        @user.password = "000000"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+      end
+      it "passwordが全角のみでは登録できない" do
+        @user.password = "あいうえおお"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+      end
       it "ユーザー本名が、全角（漢字・ひらがな・カタカナ）での入力ではない" do
         @user.family_name = "ｱｲｳｴｵ"
         @user.valid?
-        expect(@user.errors.full_messages).to include("Family name is invalid")
+        expect(@user.errors.full_messages).to include("Family name 全角文字を使用してください")
       end
       it "ユーザー本名が、全角（漢字・ひらがな・カタカナ）での入力ではない" do
         @user.first_name = "ｱｲｳｴｵ"
         @user.valid?
-        expect(@user.errors.full_messages).to include("First name is invalid")
+        expect(@user.errors.full_messages).to include("First name 全角文字を使用してください")
       end
       it "ユーザー本名のフリガナが、全角（カタカナ）での入力ではない" do
         @user.fam_name_furigana = "おいうえお"
         @user.valid?
-        expect(@user.errors.full_messages).to include("Fam name furigana is invalid")
+        expect(@user.errors.full_messages).to include("Fam name furigana 全角カタカナを使用してください")
       end
       it "ユーザー本名のフリガナが、全角（カタカナ）での入力ではない" do
         @user.fst_name_furigana = "あいうえお"
         @user.valid?
-        expect(@user.errors.full_messages).to include("Fst name furigana is invalid")
+        expect(@user.errors.full_messages).to include("Fst name furigana 全角カタカナを使用してください")
       end
     end
   end
