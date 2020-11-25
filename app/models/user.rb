@@ -12,10 +12,12 @@ class User < ApplicationRecord
     validates :fam_name_furigana
     validates :fst_name_furigana
   end
-
+  with_options presence: true do
+    validates :nickname
+    validates :birthday
+  end
   validates :email, uniqueness: true
-  validates :nickname, presence: true
-  validates :birthday, presence: true
+  
 
   has_many :items
   has_many :user_items
