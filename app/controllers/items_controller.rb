@@ -9,13 +9,18 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
-  def creste
+  def create
     @item = Item.new(item_params)
+    if @item.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   private
 
-  def prototype_params
+  def item_params
     params.require(:item).permit(:product_name, :profile, :category_id, :condition_id, :prefecture_id, :charge_id, :days_to_ship_id, :price, :image).merge(user_id: current_user.id)
   end
 
