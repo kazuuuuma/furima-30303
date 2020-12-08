@@ -73,6 +73,41 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("User must exist")
       end
+      it "product_nameが---だと出品できない" do
+        @item.product_name = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include( )
+      end
+      it "profileが---だと出品できない" do
+        @item.profile = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include( )
+      end
+      it "category_idが---だと出品できない" do
+        @item.category_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include( )
+      end
+      it "condition_idが---だと出品できない" do
+        @item.condition_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include( )
+      end
+      it "charge_idが---だと出品できない" do
+        @item.charge_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include( )
+      end
+      it "days_to_shipが---だと出品できない" do
+        @item.days_to_ship_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include( )
+      end
+      it "prefecture_idが---だと出品できない" do
+        @item.prefecture_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include( )
+      end
     end
   end
 end
