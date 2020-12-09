@@ -1,10 +1,8 @@
 class ItemsController < ApplicationController
-  # before_action :move_to_index, expect: [:index, :show]
-  
-  +  before_action :move_to_sing_in, except: [:index, :show]
+  before_action :move_to_sing_in, except: [:index, :show]
 
   def index
-
+    @items = Item.all
   end
 
   def new
