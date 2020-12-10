@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :user
-  ActiveHash::Associations::ActiveRecordExtensions
+  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :condition
   belongs_to :charge
