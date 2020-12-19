@@ -5,12 +5,12 @@ class OrdersController < ApplicationController
   before_action :move_to_index
 
   def index
-    # @item = Item.find(params[:item_id])
+    set_item
     @order = Form.new
   end
 
   def create
-    # @item = Item.find(params[:item_id])
+    set_item
     @order = Form.new(form_params)
     if @order.valid?
       pay_item

@@ -10,6 +10,10 @@ RSpec.describe Form, type: :model do
       it "postalcode, prefecture_id, municipality, address, phonenumber, tokenが存在すれば購入情報保存できる" do
         expect(@form).to be_valid
       end
+      it "建物が空でも保存できる" do
+        @form.build = ''
+        expect(@form).to be_valid
+      end
     end
 
     context '購入情報保存がうまくいかないとき' do
