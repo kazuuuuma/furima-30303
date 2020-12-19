@@ -53,9 +53,10 @@ RSpec.describe Form, type: :model do
         expect(@form.errors.full_messages).to include("Phonenumber is invalid")
       end
       it "電話番号は11桁以内であること" do
+        binding.pry
         @form.phonenumber = '000000000000'
         @form.valid?
-        expect(@form.errors.full_messages).to include( )
+        expect(@form.errors.full_messages).to include("Phonenumber is invalid")
       end
       it "tokenが空では登録できないこと" do
         @form.token = nil
