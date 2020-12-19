@@ -2,15 +2,17 @@ class OrdersController < ApplicationController
 
   def index
     @item = Item.find(params[:item_id])
+    @order = Form.new
   end
 
   def create
+    @item = Item.find(params[:item_id])
     @order = Form.new(form_params)
     if @order.valid?
       @order.save
-      redirect_to action: :index
+      redirect_to action: 'items/index'
     else
-      render action: :new
+      render action: :index
     end
   end
 
