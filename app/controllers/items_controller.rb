@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :move_to_sing_in, except: [:index, :show]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :sold_item, only: [:edit, :update]
   before_action :move_to_index, only: [:edit]
 
   def index
@@ -64,5 +65,11 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def sold_item
+    if @item.orders.present?
+      redirect_to root_path
+    end
   end
 end
