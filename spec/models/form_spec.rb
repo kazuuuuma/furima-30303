@@ -7,7 +7,7 @@ RSpec.describe Form, type: :model do
 
   describe '#create' do
     context '購入情報保存がうまくいくとき' do
-      it "postalcode, prefecture_id, municipality, address, phonenumberが存在すれば購入情報保存できる" do
+      it "postalcode, prefecture_id, municipality, address, phonenumber, tokenが存在すれば購入情報保存できる" do
         expect(@form).to be_valid
       end
     end
@@ -47,6 +47,11 @@ RSpec.describe Form, type: :model do
         @form.phonenumber = '00000000000'
         @form.valid?
         expect(@form.errors.full_messages).to include( )
+      end
+      it "tokenが空では登録できないこと" do
+        @form.token = nil
+        @form.valid?
+        expect(@form.errors.full_messages).to include("Token can't be blank")
       end
     end
   end
