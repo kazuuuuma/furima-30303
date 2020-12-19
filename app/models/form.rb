@@ -1,6 +1,6 @@
 class Form
   include ActiveModel::Model
-  attr_accessor :postalcode, :prefecture_id, :municipality, :address, :build, :phonenumber, :user_id, :item_id
+  attr_accessor :postalcode, :prefecture_id, :municipality, :address, :build, :phonenumber, :user_id, :item_id, :token
   
 
   with_options presence: true do
@@ -9,6 +9,7 @@ class Form
     validates :municipality
     validates :address
     validates :phonenumber
+    validates :token
   end
 
   validates :postalcode, format: {with: /\A\d{3}[-]\d{4}\z/ }
