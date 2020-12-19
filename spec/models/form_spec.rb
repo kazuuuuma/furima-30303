@@ -39,12 +39,17 @@ RSpec.describe Form, type: :model do
         expect(@form.errors.full_messages).to include("Phonenumber can't be blank")
       end
       it "郵便番号にはハイフンが必要であること" do
-        @form.postalcode = '-'
+        @form.postalcode = '0000000'
         @form.valid?
         expect(@form.errors.full_messages).to include("Postalcode is invalid")
       end
-      it "電話番号にはハイフンは不要で、11桁以内であること" do
-        @form.phonenumber = '00000000000'
+      it "電話番号にはハイフンは不要であること" do
+        @form.phonenumber = '000-0000-0000'
+        @form.valid?
+        expect(@form.errors.full_messages).to include( )
+      end
+      it "電話番号は11桁以内であること" do
+        @form.phonenumber = '000000000000'
         @form.valid?
         expect(@form.errors.full_messages).to include( )
       end

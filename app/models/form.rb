@@ -4,16 +4,15 @@ class Form
   
 
   with_options presence: true do
-    validates :postalcode
+    validates :postalcode, format: {with: /\A\d{3}[-]\d{4}\z/ }
     validates :prefecture_id
     validates :municipality
     validates :address
-    validates :phonenumber
+    validates :phonenumber, format: {with: /\A\d{10,11}\z/ }
+    validates :user_id
+    validates :item_id
     validates :token
   end
-
-  validates :postalcode, format: {with: /\A\d{3}[-]\d{4}\z/ }
-  validates :phonenumber, format: {with: /\A\d{10,11}\z/ }
 
   def save
     # user = User.create( family_name: family_name, first_name: first_name, fam_name_furigana: fam_name_furigana, fst_name_furigana: fst_name_furigana, birthday: birthday, nickname: nickname)
