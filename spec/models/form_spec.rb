@@ -50,7 +50,7 @@ RSpec.describe Form, type: :model do
       it "電話番号にはハイフンは不要であること" do
         @form.phonenumber = '000-0000-0000'
         @form.valid?
-        expect(@form.errors.full_messages).to include( )
+        expect(@form.errors.full_messages).to include("Phonenumber is invalid")
       end
       it "電話番号は11桁以内であること" do
         @form.phonenumber = '000000000000'
