@@ -11,6 +11,9 @@ class Form
     validates :phonenumber
   end
 
+  validates :postalcode, format: {with: /\A\d{3}[-]\d{4}\z/ }
+  validates :phonenumber, format: {with: /\A\d{10,11}\z/ }
+
   def save
     # user = User.create( family_name: family_name, first_name: first_name, fam_name_furigana: fam_name_furigana, fst_name_furigana: fst_name_furigana, birthday: birthday, nickname: nickname)
     # item = Item.create(:nickname, :email, :family_name, :first_name, :fam_name_furigana, :fst_name_furigana, :birthday)
