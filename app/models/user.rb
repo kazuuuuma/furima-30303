@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   with_options presence: true do
     validates :nickname
-    validates :email, unique: true
+    validates :email
     validates :encrypted_password
     validates :family_name
     validates :first_name
